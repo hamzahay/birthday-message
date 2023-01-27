@@ -4,7 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "nodemon": "nodemon bin/http.js",
+    "start": "node bin/http.js",
+    "db:create": "sequelize db:create",
+    "db:create:dev": "set NODE_ENV=development&&npm run db:create",
+    "db:create:test": "set NODE_ENV=test&&npm run db:create",
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:dev": "set NODE_ENV=development&&npm run db:migrate",
+    "db:migrate:test": "set NODE_ENV=test&&npm run db:migrate",
+    "test": "set NODE_ENV=test&&npx jest",
+    "test:http": "set NODE_ENV=test&&nodemon bin/http.js"
   },
   "repository": {
     "type": "git",
@@ -27,5 +36,9 @@
     "pg": "^8.8.0",
     "sequelize": "^6.28.0",
     "sequelize-cli": "^6.6.0"
+  },
+  "devDependencies": {
+    "jest": "^29.4.1",
+    "supertest": "^6.3.3"
   }
 }
